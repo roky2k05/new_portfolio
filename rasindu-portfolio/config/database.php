@@ -2,10 +2,10 @@
 /**
  * Rasindu Nawod Portfolio Website
  * File: config/database.php
- * Secure PDO Connection to MySQL Database
+ * Secure Database Connection, System Constants & Session Hardening
  */
 
-// Database Credentials (Update as required for hosting environment)
+// Database Credentials (Update for production hosting if different from standard XAMPP)
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'rasindu_portfolio');
@@ -20,8 +20,20 @@ define('PHONE_NUMBER', '+94 74 386 9265');
 define('LOCATION_INFO', 'Sri Lanka | Matara | Akuressa');
 define('WHATSAPP_LINK', 'https://wa.me/94743869265');
 
+// Initial Admin Credentials (Used for automatic database seeding if not yet created)
+define('SEED_ADMIN_USERNAME', 'rasindu');
+define('SEED_ADMIN_PASSWORD', 'RokyN2k0_5');
+
+// Session security setup
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_only_cookies', 1);
+    ini_set('session.cookie_samesite', 'Lax');
+    session_start();
+}
+
 /**
- * Establish Database Connection
+ * Establish Database Connection using PDO
  * @return PDO
  */
 function getDatabaseConnection(): PDO {
@@ -38,6 +50,7 @@ function getDatabaseConnection(): PDO {
 
         try {
             $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+            autoSeedAdminAccount($pdo);
         } catch (PDOException $e) {
             error_log("Database Connection Error: " . $e->getMessage());
             if (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false) {
@@ -48,10 +61,35 @@ function getDatabaseConnection(): PDO {
                 ]);
                 exit;
             } else {
-                die("<h1>Database Connection Failed</h1><p>Please check your config/database.php settings and ensure MySQL is running in XAMPP.</p>");
+                die("<h1>Database Connection Failed</h1><p>Please check your config/database.php settings and ensure MySQL is running in XAMPP. Error: " . htmlspecialchars($e->getMessage()) . "</p>");
             }
         }
     }
 
     return $pdo;
+}
+
+/**
+ * Automatically ensure the primary admin account exists in the database
+ */
+function autoSeedAdminAccount(PDO $pdo): void {
+    try {
+        $checkStmt = $pdo->prepare("SELECT id FROM users WHERE username = :u LIMIT 1");
+        $checkStmt->execute([':u' => SEED_ADMIN_USERNAME]);
+        if (!$checkStmt->fetch()) {
+            $hash = password_hash(SEED_ADMIN_PASSWORD, PASSWORD_BCRYPT);
+            $insert = $pdo->prepare("
+                INSERT INTO users (full_name, username, email, phone, password, role, status)
+                VALUES ('Rasindu Nawod', :u, :email, :phone, :pass, 'admin', 'active')
+            ");
+            $insert->execute([
+                ':u'     => SEED_ADMIN_USERNAME,
+                ':email' => ADMIN_EMAIL,
+                ':phone' => PHONE_NUMBER,
+                ':pass'  => $hash,
+            ]);
+        }
+    } catch (Exception $e) {
+        // Table may not yet be imported, suppress to allow installer/importer to run
+    }
 }

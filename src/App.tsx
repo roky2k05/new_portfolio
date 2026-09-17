@@ -18,6 +18,7 @@ import { CvModal } from './components/CvModal';
 import { QuoteModal } from './components/QuoteModal';
 import { AdminModal } from './components/AdminModal';
 import { SourceCodeModal } from './components/SourceCodeModal';
+import { ClientPortalModal, UserAccount } from './components/ClientPortalModal';
 import { ContactMessage } from './types';
 import { INITIAL_MESSAGES } from './data/portfolioData';
 
@@ -35,6 +36,23 @@ export default function App() {
   const [quoteServiceTitle, setQuoteServiceTitle] = useState('Web Development');
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isSourceCodeOpen, setIsSourceCodeOpen] = useState(false);
+
+  // Client Portal & Auth Modal State
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const [portalTab, setPortalTab] = useState<'login' | 'register' | 'dashboard' | 'admin' | 'security'>('login');
+
+  // Authenticated user state with localStorage persistence
+  const [currentUser, setCurrentUser] = useState<UserAccount | null>(() => {
+    const saved = localStorage.getItem('rasindu_current_user');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse current user', e);
+      }
+    }
+    return null;
+  });
 
   // Messages database state with localStorage persistence
   const [messages, setMessages] = useState<ContactMessage[]>(() => {
@@ -65,8 +83,57 @@ export default function App() {
     localStorage.setItem('rasindu_contact_messages', JSON.stringify(messages));
   }, [messages]);
 
-  const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
+  // Sync current user
+  useEffect(() => {
+    if (currentUser) {
+      localStorage.setItem('rasindu_current_user', JSON.stringify(currentUser));
+    } else {
+      localStorage.removeItem('rasindu_current_user');
+    }
+  }, [currentUser]);
+
+  const handleLogin = (user: UserAccount) => {
+    setCurrentUser(user);
+    if (user.role === 'admin') {
+      setPortalTab('admin');
+    } else {
+      setPortalTab('dashboard');
+    }
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsPortalOpen(false);
+  };
+
+  const handleOpenLogin = () => {
+    setPortalTab('login');
+    setIsPortalOpen(true);
+  };
+
+  const handleOpenRegister = () => {
+    setPortalTab('register');
+    setIsPortalOpen(true);
+  };
+
+  const handleOpenDashboard = () => {
+    if (currentUser?.role === 'admin') {
+      setPortalTab('admin');
+    } else {
+      setPortalTab('dashboard');
+    }
+    setIsPortalOpen(true);
+  };
+
+  const handleOpenAdminConsole = () => {
+    if (currentUser?.role === 'admin') {
+      setPortalTab('admin');
+      setIsPortalOpen(true);
+    } else {
+      // Prompt admin login directly
+      setPortalTab('login');
+      setIsPortalOpen(true);
+    }
   };
 
   const handleSendMessage = async (msg: Omit<ContactMessage, 'id' | 'createdAt' | 'status'>): Promise<boolean> => {
@@ -92,6 +159,12 @@ export default function App() {
     );
   };
 
+  const handleAdminReply = (messageId: string, replyText: string, newStatus: 'Replied' | 'In Progress' | 'Closed') => {
+    setMessages(prev =>
+      prev.map(m => (m.id === messageId ? { ...m, status: newStatus === 'Replied' ? 'Replied' : 'Read' } : m))
+    );
+  };
+
   const handleDeleteMessage = (id: string) => {
     setMessages(prev => prev.filter(m => m.id !== id));
   };
@@ -108,13 +181,6 @@ export default function App() {
     }
   };
 
-  const handleScrollToProjects = () => {
-    const el = document.getElementById('projects');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white dark:bg-[#0b0d13] text-neutral-900 dark:text-neutral-100 font-sans transition-colors duration-300 antialiased selection:bg-rose-500 selection:text-white">
       
@@ -123,9 +189,14 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenCv={() => setIsCvOpen(true)}
-        onOpenAdmin={() => setIsAdminOpen(true)}
+        onOpenAdmin={handleOpenAdminConsole}
         onOpenSourceModal={() => setIsSourceCodeOpen(true)}
         unreadCount={messages.filter((m) => m.status === 'Unread').length}
+        currentUser={currentUser}
+        onOpenLogin={handleOpenLogin}
+        onOpenRegister={handleOpenRegister}
+        onOpenDashboard={handleOpenDashboard}
+        onLogout={handleLogout}
       />
 
       {/* Main Content Sections */}
@@ -148,7 +219,7 @@ export default function App() {
         {/* Services */}
         <ServicesSection onSelectService={handleSelectServiceForQuote} />
 
-        {/* Work Process */}
+        {/* Work Process (How I Work) */}
         <WorkProcess />
 
         {/* Projects Showcase */}
@@ -202,6 +273,19 @@ export default function App() {
       <SourceCodeModal
         isOpen={isSourceCodeOpen}
         onClose={() => setIsSourceCodeOpen(false)}
+      />
+
+      {/* Complete Client Portal & Security Test Suite Modal */}
+      <ClientPortalModal
+        isOpen={isPortalOpen}
+        onClose={() => setIsPortalOpen(false)}
+        initialTab={portalTab}
+        currentUser={currentUser}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+        messages={messages}
+        onSendMessage={handleSendMessage}
+        onAdminReply={handleAdminReply}
       />
 
     </div>
