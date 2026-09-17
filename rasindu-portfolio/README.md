@@ -84,5 +84,10 @@ rasindu-portfolio/
 - **Developer**: Rasindu Nawod
 - **Roles**: Web Developer | Graphic Designer
 - **Location**: Sri Lanka | Matara | Akuressa
-- **Phone / WhatsApp**: +94 74 123 4567
+- **Phone / WhatsApp**: +94 74 386 9265
 - **Email**: razindunawod@gmail.com
+- **GitHub**: https://github.com/roky2k05
+- **LinkedIn**: https://www.linkedin.com/in/rasindu-nawod-148901374
+- **Facebook**: https://www.facebook.com/share/1F6N9ALqmG/
+- **Instagram**: https://www.instagram.com/lex_frost2k5?stkn=dmloMGtkc2RmZWIz
+- **TikTok**: https://www.tiktok.com/@rokiya2k

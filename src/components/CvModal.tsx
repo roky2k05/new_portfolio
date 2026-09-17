@@ -32,7 +32,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 RASINDU NAWOD
 Web Developer | Graphic Designer
 Location: Sri Lanka | Matara | Akuressa
-Phone/WhatsApp: +94 74 123 4567
+Phone/WhatsApp: +94 74 386 9265
 Email: ${PERSONAL_INFO.email}
 
 PROFILE SUMMARY

@@ -95,7 +95,8 @@ define('DB_CHARSET', 'utf8mb4');
 // Site Constants
 define('SITE_NAME', 'Rasindu Nawod | Portfolio');
 define('SITE_EMAIL', 'razindunawod@gmail.com');
-define('SITE_PHONE', '+94 74 123 4567');
+define('SITE_PHONE', '+94 74 386 9265');
+define('SITE_WHATSAPP', 'https://wa.me/94743869265');
 define('SITE_LOCATION', 'Sri Lanka | Matara | Akuressa');
 
 try {

@@ -24,9 +24,9 @@ export const PERSONAL_INFO = {
   location: 'Sri Lanka | Matara | Akuressa',
   locationShort: 'Matara, Akuressa, Sri Lanka',
   nationality: 'Sri Lankan',
-  phone: '+94 74 123 4567',
-  whatsapp: '+94 74 123 4567',
-  whatsappUrl: 'https://wa.me/94741234567?text=Hello%20Rasindu,%20I%20visited%20your%20portfolio!',
+  phone: '+94 74 386 9265',
+  whatsapp: '+94 74 386 9265',
+  whatsappUrl: 'https://wa.me/94743869265?text=Hello%20Rasindu,%20I%20visited%20your%20portfolio!',
   email: 'razindunawod@gmail.com',
   educationShort: 'ICBT Campus (CSE Diploma)',
   statusShort: 'Currently Studying & Available for Projects',
@@ -36,42 +36,42 @@ export const PERSONAL_INFO = {
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     platform: 'GitHub',
-    url: 'https://github.com/rasindunawod',
+    url: 'https://github.com/roky2k05',
     icon: 'github',
     isActive: true,
-    username: '@rasindunawod',
+    username: '@roky2k05',
   },
   {
     platform: 'LinkedIn',
-    url: 'https://linkedin.com/in/rasindunawod',
+    url: 'https://www.linkedin.com/in/rasindu-nawod-148901374',
     icon: 'linkedin',
     isActive: true,
     username: 'Rasindu Nawod',
   },
   {
     platform: 'WhatsApp',
-    url: 'https://wa.me/94741234567',
+    url: 'https://wa.me/94743869265',
     icon: 'whatsapp',
     isActive: true,
-    username: '+94 74 123 4567',
+    username: '+94 74 386 9265',
   },
   {
     platform: 'Instagram',
-    url: 'https://instagram.com/rasindunawod',
+    url: 'https://www.instagram.com/lex_frost2k5?stkn=dmloMGtkc2RmZWIz',
     icon: 'instagram',
     isActive: true,
     username: '@rasindunawod',
   },
   {
     platform: 'Facebook',
-    url: 'https://facebook.com/rasindunawod',
+    url: 'https://www.facebook.com/share/1F6N9ALqmG/',
     icon: 'facebook',
     isActive: true,
     username: 'Rasindu Nawod',
   },
   {
     platform: 'TikTok',
-    url: 'https://tiktok.com/@rasindunawod',
+    url: 'https://www.tiktok.com/@rokiya2k?_r=1&_d=eghhldf7b1bdcf&sec_uid=MS4wLjABAAAA9Fc8bjJeZgg20lwBvRADfJKQpJKMRB_UvsZKLhxLenI0rBAqYLucldlVJOKP4AfY&share_author_id=7237487704039982085&sharer_language=en&source=h5_m&u_code=e85lf7kg2c73c5&timestamp=1789668068&user_id=7237487704039982085&sec_user_id=MS4wLjABAAAA9Fc8bjJeZgg20lwBvRADfJKQpJKMRB_UvsZKLhxLenI0rBAqYLucldlVJOKP4AfY&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7685691593941632788&share_link_id=55482e22-81d5-4931-8ef4-c1ba7cb431da&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1',
     icon: 'tiktok',
     isActive: true,
     username: '@rasindunawod',
@@ -175,7 +175,7 @@ export const SKILLS_DATA: SkillItem[] = [
   {
     name: 'Tailwind CSS',
     category: 'Development',
-    proficiency: 'Advanced',
+    proficiency: 'Learning',
     description: 'Utility-first rapid prototyping, responsive layouts, design tokens, and dark mode.',
     iconName: 'wind',
   },
@@ -191,14 +191,14 @@ export const SKILLS_DATA: SkillItem[] = [
   {
     name: 'Adobe Illustrator',
     category: 'Design',
-    proficiency: 'Advanced',
+    proficiency: 'Intermediate',
     description: 'Vector graphics, custom logo marks, iconography, branding kits, and typography layout.',
     iconName: 'pen-tool',
   },
   {
     name: 'Adobe Photoshop',
     category: 'Design',
-    proficiency: 'Intermediate',
+    proficiency: 'Advanced',
     description: 'Creative posters, social media banners, photo manipulation, mockups, and digital art.',
     iconName: 'image',
   },
@@ -575,34 +575,25 @@ export const PRICING_TIERS: PricingTier[] = [
 export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: 'test-1',
-    name: 'Sample Academic Mentor',
+    name: 'Navod Nawarathna',
     role: 'Lecturer in Software Engineering',
     organization: 'ICBT Campus (Sample Mentor Feedback)',
     content:
       'Rasindu demonstrates commendable enthusiasm for clean coding standards and interface aesthetics. His eagerness to blend frontend responsiveness with backend database architecture reflects strong potential.',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    avatar: 'https://media.licdn.com/dms/image/v2/D5603AQGWpT_AgdLU2A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730312666347?e=1791417600&v=beta&t=O_YQA_6VPnv_KlcCU-j1-nvMvaI922udkYgXDnOYq30',
     isSample: true,
   },
   {
     id: 'test-2',
-    name: 'Sample Design Reviewer',
+    name: 'Paramee Lakshitha',
     role: 'Senior Graphic Designer',
     organization: 'Creative Studio (Sample Review)',
     content:
       'The composition and vector mastery shown in Rasindu’s graphic design work stand out. He understands color theory, typography hierarchy, and brand cohesion very well for an emerging creative.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    avatar: 'data:image/jpeg;base64,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',
     isSample: true,
   },
-  {
-    id: 'test-3',
-    name: 'Sample Project Collaborator',
-    role: 'Peer Developer',
-    organization: 'Rahula College Tech Circle (Sample Note)',
-    content:
-      'Working alongside Rasindu on technology projects is always a pleasure. He is dedicated, pays great attention to visual detail, and always ensures websites work seamlessly on mobile screens.',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    isSample: true,
-  },
+ 
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -687,7 +678,7 @@ export const INITIAL_MESSAGES: ContactMessage[] = [
     id: 'msg-1',
     name: 'Kaveen Jayawardena',
     email: 'kaveen@example.com',
-    phone: '+94 77 123 4567',
+    phone: '+94 77 520 3445',
     subject: 'Inquiry: Modern Portfolio Website',
     message: 'Hello Rasindu, I saw your case studies and need a responsive portfolio for my architecture practice. Looking forward to discussing the project scope.',
     status: 'Unread',

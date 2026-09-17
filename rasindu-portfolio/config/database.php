@@ -16,9 +16,9 @@ define('DB_CHARSET', 'utf8mb4');
 // Profile & Contact Constants
 define('SITE_NAME', 'Rasindu Nawod | Web Developer & Graphic Designer');
 define('ADMIN_EMAIL', 'razindunawod@gmail.com');
-define('PHONE_NUMBER', '+94 74 123 4567');
+define('PHONE_NUMBER', '+94 74 386 9265');
 define('LOCATION_INFO', 'Sri Lanka | Matara | Akuressa');
-define('WHATSAPP_LINK', 'https://wa.me/94741234567');
+define('WHATSAPP_LINK', 'https://wa.me/94743869265');
 
 /**
  * Establish Database Connection

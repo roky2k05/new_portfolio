@@ -35,11 +35,11 @@
 
             <div class="md:col-span-3 space-y-2 text-xs">
                 <h4 class="font-bold uppercase tracking-wider text-white mb-3">Direct Contact</h4>
-                <p class="text-neutral-400">Phone: +94 74 123 4567</p>
-                <p class="text-neutral-400">Email: razindunawod@gmail.com</p>
-                <p class="text-neutral-400">Location: Sri Lanka | Matara | Akuressa</p>
+                <p class="text-neutral-400">Phone: <?= PHONE_NUMBER; ?></p>
+                <p class="text-neutral-400">Email: <?= ADMIN_EMAIL; ?></p>
+                <p class="text-neutral-400">Location: <?= LOCATION_INFO; ?></p>
                 <div class="pt-2">
-                    <a href="https://wa.me/94741234567" target="_blank" class="inline-block px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold">
+                    <a href="<?= WHATSAPP_LINK; ?>" target="_blank" class="inline-block px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-500 transition-colors">
                         Chat on WhatsApp
                     </a>
                 </div>
